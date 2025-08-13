@@ -8,4 +8,4 @@ class VirtualMotor:
         """Simuliert die Motor-Dynamik (PT1-Verhalten) mit Verstärkung."""
         target_rpm = self.K * u  # Umrechnung Spannung → Ziel-RPM
         self.y += (target_rpm - self.y) / self.T * dt
-        return min(self.y, self.K * 10)  # Begrenzung auf 10V → 1200 RPM
+        return self.y 

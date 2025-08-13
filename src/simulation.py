@@ -21,18 +21,18 @@ for step in range(3000):
         print(f"\nSollwert geändert auf 500 RPM bei t={step*dt:.1f}s\n")
     
     # Regelung
-    voltage = pid(motor.y)
-    rpm = motor.update(voltage, dt)
+    voltage = pid(motor.y) # PID-Regler berechnet die Stellgröße basierend auf der aktuellen Drehzahl
+    motor.update(voltage, dt) # Motor-Modell aktualisiert seine Drehzahl basierend auf der Stellspannung
     
     # Daten speichern
     time_log.append(step * dt)
-    rpm_log.append(rpm)
+    rpm_log.append(motor.y) # Die aktuelle Drehzahl wird aus dem Motor-Objekt gelesen
     voltage_log.append(voltage)
     setpoint_log.append(pid.setpoint)
     
     # Debug-Ausgabe nur alle 1s
     if step % int(1/dt) == 0:
-        print(f"t={step*dt:.1f}s | RPM={rpm:.1f} | Voltage={voltage:.2f}V | Error={pid.setpoint-rpm:.1f}")
+        print(f"t={step*dt:.1f}s | RPM={motor.y:.1f} | Voltage={voltage:.2f}V | Error={pid.setpoint-motor.y:.1f}")
 
 # 4. Ergebnisse plotten
 plt.figure(figsize=(10, 5))
