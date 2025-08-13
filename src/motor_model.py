@@ -6,6 +6,8 @@ class VirtualMotor:
 
     def update(self, u, dt):
         """Simuliert die Motor-Dynamik (PT1-Verhalten) mit Verstärkung."""
+        # Print-Befehl zur Überprüfung der Eingangspannung (u)
+        print(f"Motor receives voltage: {u:.2f}V") 
         target_rpm = self.K * u  # Umrechnung Spannung → Ziel-RPM
         self.y += (target_rpm - self.y) / self.T * dt
-        return self.y 
+        return self.y
