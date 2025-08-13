@@ -58,10 +58,19 @@ class PID:
 def create_pid_controller():
     """Initialisiert den manuellen PID-Regler."""
     return PID(
-        Kp=0.005, 
-        Ki=0.01, 
-        Kd=0.0, 
+        Kp=0.08, 
+        Ki=0.02, 
+        Kd=0.00, 
         setpoint=1000, 
         sample_time=0.01, 
         output_limits=(0, 10)
     )
+#Experimente mit Werten, manche realitätsfern 
+
+# Kp=0.005 
+# Ki=0.01
+# Kd=0.0      
+
+# Kp=1.2, 
+# Ki=0.1, 
+# Kd=0.2, 

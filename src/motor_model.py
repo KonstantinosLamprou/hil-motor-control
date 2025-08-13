@@ -10,3 +10,6 @@ class VirtualMotor:
         target_rpm = self.K * u  # Umrechnung Spannung → Ziel-RPM
         self.y += (target_rpm - self.y) / self.T * dt
         return self.y
+    
+
+    #self.K auf hundert gestellt statt auf 120 wegen systematischen off-set

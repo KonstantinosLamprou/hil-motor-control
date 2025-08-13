@@ -20,7 +20,7 @@ for step in range(3000):
     # Sollwert-Änderung nach 15 Sekunden
     if step == 1500:
         pid.setpoint = 500
-    
+        pid._integral = 0
     # Regelung
     voltage = pid(motor.y) # PID-Regler berechnet die Stellgröße
     motor.update(voltage, dt) # Motor-Modell wird aktualisiert
